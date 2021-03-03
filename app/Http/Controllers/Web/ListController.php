@@ -40,27 +40,35 @@ class ListController extends BaseController
 		return view($this->template.'.list.server');
     }
 
+	/**
+	 * 服务详情
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+    public function detail()
+	{
+		return view($this->template.'.list.detail');
+	}
+
     /**
+	 * 文章列表
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function news()
     {
-        //
+        return view($this->template . '.list.news');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+	/**
+	 * 文章详情
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+    public function show()
+	{
+		return view($this->template . '.list.show');
+	}
 
     /**
      * Show the form for editing the specified resource.
@@ -68,31 +76,8 @@ class ListController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function about()
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view($this->template . '.list.about');
     }
 }

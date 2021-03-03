@@ -20,4 +20,8 @@ Route::group(['namespace' => 'Web'], function (){
 	Route::get('/list', 'ListController@index');
 	Route::get('/list/info', 'ListController@info');
 	Route::get('/list/server', 'ListController@server');
+	Route::get('/list/detail', 'ListController@detail');
+	Route::get('/list/news', 'ListController@news');
+	Route::get('/list/show', 'ListController@show');
+	Route::get('/list/about', 'ListController@about');
 });

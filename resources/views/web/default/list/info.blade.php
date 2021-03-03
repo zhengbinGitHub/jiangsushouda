@@ -38,24 +38,6 @@
                                             </ul>
                                             <div class="clear"></div>
                                         </div>
-                                        <div class="tab_button">
-                                            <ul class="content_list">
-                                                <li id="item_block_0" class="item_block active" data-tab-index="0">
-                                                    <div class="wrapper">
-                                                        <div class="item_img">
-                                                            <img src="//resources.jsmo.xin/templates/upload/2384/201704/1492670729519_80x80.jpg" />
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li id="item_block_1" class="item_block" data-tab-index="1">
-                                                    <div class="wrapper">
-                                                        <div class="item_img">
-                                                            <img src="//resources.jsmo.xin/templates/upload/2384/201704/1492670730108_80x80.jpg" />
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
                                     </div>
                                     <div class="postMianCont">
                                         <div id="postInfo">
@@ -268,4 +250,25 @@
 @endsection
 
 @section('script')
+    <script type="text/javascript">
+        var SliderOption = {
+            slideWidth: 278,
+            nextText: '<i class="fa fa-angle-right"></i>',
+            prevText: '<i class="fa fa-angle-left"></i>',
+            minSlides: 1,
+            maxSlides: 4,
+            moveSlides: 2,
+            startSlide: 1,
+            slideMargin: 11,
+            infiniteLoop: !{},
+        }
+        SliderOption.slideMargin = 0
+        var boxSlider = function(div, SliderOption){
+            $(div+' .tab_content .content_list').bxSlider(SliderOption);
+        }
+        SliderOption.slideWidth = 1170
+        SliderOption.maxSlides = 1
+        SliderOption.moveSlides = 1
+        boxSlider('#postSlider', SliderOption)
+    </script>
     @endsection

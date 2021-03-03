@@ -15,6 +15,12 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
+                    <label for="" class="layui-form-label">简介</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="sub_title" value="{{$info->sub_title}}" lay-verify="required" placeholder="请输入标题简介" class="layui-input col-xs-8" >
+                    </div>
+                </div>
+                <div class="layui-form-item">
                     <label for="" class="layui-form-label"><span style="color: #FF5722;">*</span>URl</label>
                     <div class="layui-input-block">
                         <input type="text" name="link" value="{{$info->link}}" lay-verify="required" placeholder="请输入图片连接" class="layui-input col-xs-8" >
@@ -50,6 +56,12 @@
                                 <span>建议上传图片尺寸:800×800</span>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="" class="layui-form-label">显示描述</label>
+                    <div class="layui-input-block">
+                        <input type="checkbox" {{$info->is_description == 1 ? 'checked' : ''}} name="is_description" lay-skin="switch" lay-text="显示|隐藏">
                     </div>
                 </div>
                 <div class="layui-form-item">

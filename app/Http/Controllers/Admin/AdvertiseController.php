@@ -66,6 +66,10 @@ class AdvertiseController extends BaseController
 		$isInfo = Arr::get($datas, 'is_info', '');
 		$params['is_info'] = $isInfo == 'on' ? 1 : 0;
 		$params['link'] = Arr::get($datas, 'link');
+		$isDescription = Arr::get($datas, 'is_description', '');
+		$params['is_description'] = $isDescription == 'on' ? 1 : 0;
+		$params['sub_title'] = Arr::get($datas, 'sub_title', '');
+
 		if(Advertise::query()->create($params)){
 			return $this->success('添加成功');
 		}
@@ -107,7 +111,11 @@ class AdvertiseController extends BaseController
 		$info->is_channel = $isChannel == 'on' ? 1 : 0;
 		$isInfo = Arr::get($datas, 'is_info', '');
 		$info->is_info = $isInfo == 'on' ? 1 : 0;
-		$params['link'] = Arr::get($datas, 'link');
+		$info->link = Arr::get($datas, 'link');
+		$isDescription = Arr::get($datas, 'is_description', '');
+		$info->is_description = $isDescription == 'on' ? 1 : 0;
+		$info->sub_title = Arr::get($datas, 'sub_title', '');
+
 		if($info->save()){
 			return $this->success('更新成功');
 		}

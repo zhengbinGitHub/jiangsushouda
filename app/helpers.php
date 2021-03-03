@@ -36,3 +36,38 @@ if(!function_exists('format_upload_path')) {
 		return $path;
 	}
 }
+
+if(!function_exists('get_controller_function')) {
+	/**
+	 * @return array
+	 * 获取控制器和方法名
+	 */
+	function get_controller_function()
+	{
+		list($class, $method) = explode('@', \Route::current()->getActionName());
+		# 模块名
+		$params['modules'] = strtolower(str_replace(
+			'\\',
+			'.',
+			str_replace(
+				'App\\Http\\Controllers\\',
+				'',
+				trim(
+					implode('\\', array_slice(explode('\\', $class), 0, -1)),
+					'\\'
+				)
+			)
+		));
+
+		# 控制器名称
+		$params['controller'] = strtolower(str_replace(
+			'Controller',
+			'',
+			substr(strrchr($class, '\\'), 1)
+		));
+
+		# 方法名
+		$params['method'] = $method;
+		return $params;
+	}
+}

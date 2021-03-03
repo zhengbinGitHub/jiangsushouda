@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Advertise extends Model
 {
+	const STATUS_ON = 1;
+
 	//追加
     public $appends = ['position'];
 

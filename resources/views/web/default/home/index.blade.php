@@ -39,8 +39,8 @@
                     </div>
                 </div>
             </div>
-            @include('web.default.home.project')
             @include('web.default.home.service')
+            @include('web.default.home.project')
             @include('web.default.home.about')
             @include('web.default.home.product')
             @include('web.default.home.imagelink')

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
-use Illuminate\Http\Request;
+use App\Models\Advertise;
 
 class HomeController extends BaseController
 {
@@ -17,6 +17,10 @@ class HomeController extends BaseController
 	 */
 	public function index()
 	{
-		return view($this->template . '.home.index');
+		$banners = Advertise::query()
+			->where('is_index', 1)
+			->where('status', Advertise::STATUS_ON)
+			->get(['title', 'pic_url', 'link', 'is_description', 'sub_title']);
+		return view($this->template . '.home.index', compact('banners'));
 	}
 }

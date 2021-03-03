@@ -1,15 +1,11 @@
 <div id="footer">
     <p>
         <span class="ellipsis">
-            COPYRIGHT (©) 2021 mo005_2107 - 企业类网站.
+            COPYRIGHT (©) {{config('store.copyright')}} <a href="http://beian.miit.gov.cn" rel="nofollow" target="_blank">{{config('store.icp')}}</a>.
         </span>
-        <a class="beian" href="https://beian.miit.gov.cn/#/Integrated/index" rel="nofollow" style="color: #363636;vertical-align: top;margin-left: 10px;display: inline-block;" target="_blank"></a>
     </p>
 </div>
 <div id="shares">
-    <a href="http://service.weibo.com/share/share.php?appkey=3206975293&"  rel="nofollow" target="_blank" id="sweibo">
-        <i class="fa fa-weibo"></i>
-    </a>
     <a href="javascript:;" id="sweixin">
         <i class="fa fa-mobile"></i>
     </a>
@@ -35,8 +31,8 @@
     </div>
     <ul id="olx_qq">
         <li>
-            <a href="tencent://message/?uin=40080000&Site=uelike&Menu=yes">
-                <i class="fa fa-qq"></i>40080000
+            <a href="tencent://message/?uin={{config('store.qq')}}&Site=uelike&Menu=yes">
+                <i class="fa fa-qq"></i>{{config('store.qq')}}
             </a>
         </li>
     </ul>
@@ -45,7 +41,7 @@
             <i class="fa fa-phone"></i>联系电话
         </div>
         <p>
-            400-888-8888<br/>
+            {{config('store.tel')}}<br/>
         </p>
     </div>
 </div>

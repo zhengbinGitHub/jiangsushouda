@@ -1,0 +1,6 @@
+@charset "UTF-8";
+.agent-pc .npagePage .container_category a.active, .agent-pc .npagePage .container_category a:hover{background:#3b3b3b;}
+.agent-pc .mlist.team_tabs .tab_button .item_info p.subtitle{color: rgba(255,255,255,0.6);}
+a.active, a:hover{color: #bbb;}
+.agent-pc .news .content_list a.details i:before{left: -3px;}
+.agent-pc .npagePage.post #postInfo{margin-bottom: 40px;}

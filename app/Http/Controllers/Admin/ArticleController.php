@@ -23,7 +23,7 @@ class ArticleController extends BaseController
 		$title = $request->get('title', null);
 		$groupId = $request->get('group_id');
 		$limit = $request->get('limit', config('store.page_size'));
-		$fields = ['id', 'title', 'cover', 'group_id', 'is_hot', 'status', 'created_at'];
+		$fields = ['id', 'title', 'subtitle', 'cover', 'group_id', 'is_hot', 'status', 'created_at'];
 		$params = [];
 		if(0 < $groupId && is_numeric($groupId)){
 			$params['group_id'] = $groupId;
@@ -93,6 +93,7 @@ class ArticleController extends BaseController
         $datas = $request->all();
         $params = [];
         $params['title'] = Arr::get($datas, 'title');
+        $params['subtitle'] = Arr::get($datas, 'subtitle');
         $params['memo'] = Arr::get($datas, 'desc');
         $imgs = Arr::get($datas, 'imgs', []);
         $params['cover'] = $imgs ? $imgs[0] : '';
@@ -130,7 +131,7 @@ class ArticleController extends BaseController
     public function edit($id)
     {
     	$fields = [
-    		'id', 'title', 'memo', 'cover', 'group_id', 'is_hot', 'status'
+    		'id', 'title', 'memo', 'cover', 'group_id', 'is_hot', 'status', 'subtitle'
 		];
     	$info = Article::query()->with('detail')->find($id, $fields);
     	$groups = $this->tree();
@@ -149,6 +150,7 @@ class ArticleController extends BaseController
 		$datas = $request->all();
 		$params = [];
 		$params['title'] = Arr::get($datas, 'title');
+		$params['subtitle'] = Arr::get($datas, 'subtitle');
 		$params['memo'] = Arr::get($datas, 'desc');
 		$imgs = Arr::get($datas, 'imgs', []);
 		$params['cover'] = $imgs ? $imgs[0] : '';

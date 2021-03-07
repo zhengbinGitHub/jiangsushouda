@@ -27,7 +27,7 @@ class GroupController extends BaseController
 		$limit = Arr::get($datas, 'limit', config('store.page_size'));
         $lists = Group::query()->where($map)->paginate($limit, [
         	'id', 'name', 'level', 'type', 'memo', 'alias',
-			'status', 'created_at', 'is_sub'
+			'status', 'created_at', 'is_sub', 'cover'
 		]);
 		return view('admin.group.index', compact('lists','level', 'parentId'));
     }
@@ -50,6 +50,7 @@ class GroupController extends BaseController
 		$params['level'] = Arr::get($datas, 'level', 1);
 		$params['status'] = 1;
 		$params['is_sub'] = Arr::get($datas, 'is_sub');
+		$params['cover'] = Arr::get($datas, 'cover', '');
 		if(Group::query()->create($params)){
 			return $this->success('添加成功');
 		}
@@ -74,6 +75,7 @@ class GroupController extends BaseController
 		$info->name = Arr::get($datas, 'name');
 		$info->memo = Arr::get($datas, 'memo');
 		$info->is_sub = Arr::get($datas, 'is_sub');
+		$info->cover = Arr::get($datas, 'cover', '');
 		if($info->save()){
 			return $this->success('更新成功');
 		}

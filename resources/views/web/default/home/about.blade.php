@@ -14,13 +14,13 @@
                     </div>
                     <div class="description wow">
                         <p>
-                            <a href="http://demo.uemo.net/itemid/60675/" target="_blank">
-                                <span style="font-size: 16px;">信步辑－老外设计师在中国：日本年轻设计师组合odd</span>
+                            <a href="{{url('company/profile')}}" target="_blank">
+                                <span style="font-size: 16px;">{{config('store.web_title')}}</span>
                                 <span style="font-size: 16px;">&nbsp;</span></a>
                         </p>
                         <p style="line-height: 1.5em;">
-                            <a href="http://demo.uemo.net/itemid/60675/" target="_blank">
-                                <span style="font-size: 12px;">Baidu SkyDrive provides file backup for your 本周的新股申购日历,收好不谢! 从上表11只新股可以申购（不排除还会有&quot;插队&quot;的），每个交易日都有，周network...</span></a>
+                            <a href="{{url('company/profile')}}" target="_blank">
+                                <span style="font-size: 12px;">江苏首达建设有限公司是江苏省住房和城乡建设厅批准的建筑工程施工总承包贰级资质企业，成立于2019年。公司自成立以来制定了“强化质量意识，严格过程管理，提供优质工程，赢得顾客信赖”的质量方针，“强化管理、依法监督；预防为主，改善环境”的环境方针，以及“安全第一，预防为主，遵规守法，加强监督；以人为本，科学管理”的职业健康安全方针。如今，公司已初步成立信用管理体系、质量管理体系、安全生产管理体系、财务管理体系、采购管理体系、成本管理体系...</span></a>
                         </p>
                     </div>
                 </div>

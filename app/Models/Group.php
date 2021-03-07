@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model
 {
+	const STATUS_ON = 1;
     //
 	protected $guarded = [];
 
@@ -15,5 +16,13 @@ class Group extends Model
 	public function childs()
 	{
 		return $this->hasMany(self::class,'parent_id','id')->orderBy('id','desc');
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function parent()
+	{
+		return $this->belongsTo(self::class, 'parent_id');
 	}
 }

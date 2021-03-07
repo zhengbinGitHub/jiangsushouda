@@ -77,4 +77,30 @@ $(document).ready(function () {
     SliderOption.maxSlides = 6;
     SliderOption.slideMargin = 0;
     boxSlider('.imagelink', SliderOption);
+
+    //
+    $("#comment").on("click",function(){
+        $('.base_form').ajaxSubmit(      //ajax方式提交表单
+            {
+                url: $('.base_form').attr('action'),
+                type: 'post',
+                dataType: 'json',
+                data: {'_token':$('meta[name=csrf_token]').attr('content')},
+                beforeSubmit: function () {
+                    $('#comment').attr('disable', true)
+                },
+                success: function (data) {
+                    if(data.status == 1){
+                        alert('提交成功');
+                    } else {
+                        alert(data.message)
+                    }
+                    return false;
+                },
+                clearForm: false,//禁止清楚表单
+                resetForm: false //禁止重置表单
+            });
+        return false;
+    });
 })
+

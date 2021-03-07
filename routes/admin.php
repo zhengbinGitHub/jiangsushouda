@@ -35,4 +35,12 @@ Route::group(['namespace'=>'Admin', 'prefix' => 'admin', 'middleware' => ['admin
 	Route::post('advertise/store', 'AdvertiseController@store')->name('admin.advertise.store');
 	Route::put('advertise/update/{id}', 'AdvertiseController@update')->name('admin.advertise.update');
 	Route::post('advertise/switch/{id}', 'AdvertiseController@switch');
+
+	//设备
+	Route::get('equipment', 'EquipmentController@index')->name('admin.equipment');
+	Route::get('equipment/edit/{id}', 'EquipmentController@edit');
+	Route::get('equipment/create', 'EquipmentController@create');
+	Route::post('equipment/store', 'EquipmentController@store')->name('admin.equipment.store');
+	Route::put('equipment/update/{id}', 'EquipmentController@update')->name('admin.equipment.update');
+	Route::post('equipment/switch/{id}', 'EquipmentController@switch');
 });

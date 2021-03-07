@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name=renderer content=webkit>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>{{config('store.web_title')}}@yield('title')</title>
+    <title>{{config('store.web_title')}}-@yield('title')</title>
     <meta name="keywords" content="@yield('keywords')">
     <meta name="description" content="@yield('description')">
     <meta name="author" content="YY-MO">

@@ -30,6 +30,19 @@
                 <input type="text" name="alias" required  lay-verify="required" placeholder="请输入分类英文名称" autocomplete="off" class="layui-input alert-alias">
             </div>
         </div>
+        <div class="layui-form-item">
+            <label for="" class="layui-form-label">封面:</label>
+            <div class="layui-input-block">
+                <div class="layui-upload" style="display: flex;align-items: flex-end;">
+                    <div class="layui-upload-list" style="margin:0">
+                        <ul id="layui-upload-box" class="layui-clear uploadPImg" style="padding-left: 0"></ul>
+                    </div>
+                    <button type="button" class="layui-btn" id="uploadP" lay-data="{name:'imgs[]',num:1}">
+                        <i class="layui-icon">&#xe67c;</i>上传图片
+                    </button>
+                </div>
+            </div>
+        </div>
         <div class="layui-form-item" >
             <span class='layui-form-label'>备注:</span>
             <div class=" layui-input-inline layui-col-md8">
@@ -80,7 +93,7 @@
             </td>
             <td><input type="checkbox" lay-filter="tag-group" data-url="{{url('admin/group/switch', ['id' => $item->id])}}" lay-text="正常|关闭" lay-skin="switch" {{$item->status == 1 ? "checked" : ""}}></td>
             <td>
-                <a href='javascript:void(0)' class="G-color-blue C-cursor-pointer C-paddingLr-5 editGroup" data-is_sub="{{$item->is_sub}}" data-id="{{$item->id}}" data-memo="{{$item->memo}}" data-alias="{{$item->alias}}" data-type="{{$item->type}}" data-name="{{$item->name}}" >修改</a>
+                <a href='javascript:void(0)' class="G-color-blue C-cursor-pointer C-paddingLr-5 editGroup" data-cover="{{$item->cover}}" data-is_sub="{{$item->is_sub}}" data-id="{{$item->id}}" data-memo="{{$item->memo}}" data-alias="{{$item->alias}}" data-type="{{$item->type}}" data-name="{{$item->name}}" >修改</a>
             </td>
         </tr>
         @endforeach
@@ -92,23 +105,25 @@
 
 @section("script")
     <script>
-        layui.use(['form', 'table'], function(){
+        layui.use(['form', 'table', 'upload'], function(){
 
             var table = layui.table
             var form = layui.form
             table.init("table-hide");
 
             admin.paginate("{{ $lists->total() }}", "{{ $lists->currentPage() }}","{{ $lists->perPage() }}");
+            admin.uploadImgBox('#uploadP','.uploadPImg');
             $(document).on('click',"#addGroup",function(){
                 //判断是添加还是修改
                 $('.alert-name').val('')
+                $('.uploadPImg').empty()
                 layer.open({
                     type: 1,
                     btn: ['确定','取消'],
                     title:'添加一个新的分类',
                     content:$("#addGroupAlert"),
                     data:{'_xsrf':$('meta[name="csrf_token"]').attr("content")},
-                    area: ['450px','400px'],
+                    area: ['450px','500px'],
                     yes :function(index,layero){
                         let isSub = 0;
                         if($('.alert-is_sub').val() != 'on'){
@@ -127,6 +142,7 @@
                                 'alias': $('.alert-alias').val(),
                                 'parent_id': $('.alert-pid').val(),
                                 'type': $('input[name="type"]:checked').val(),
+                                'cover': $(document).find('input[name="imgs[]"]').val(),
                                 'is_sub': isSub
                             },
                             success: function(response) {
@@ -145,8 +161,10 @@
                 })
             })
             $(document).on('click',".editGroup",function(){
-                let currentGroup = $(this).attr('data-name');
-                let currentId = $(this).attr('data-id');
+                let currentGroup = $(this).attr('data-name'),
+                    currentId = $(this).attr('data-id'),
+                    cover = $(this).attr('data-cover');
+                $('.uploadPImg').empty()
                 //判断是添加还是修改
                 $('.alert-name').val(currentGroup)
                 $('.alert-memo').val($(this).attr('data-memo'))
@@ -162,6 +180,9 @@
                 if($(this).attr('data-is_sub') == 1) {
                     $("input[name=is_sub]").prop("checked", true)
                 }
+                if(typeof (cover) != 'undefined'){
+                    $('.uploadPImg').append('<li><img src="' + cover + '" /><input type="hidden" name="'+name+'" value="'+ cover + '"><span hidden="" class="img-delete" style="display: none;"><i class="icon-shanchu iconfont"></i></span></li>')
+                }
                 form.render(); //更新全部
                 layer.open({
                     type: 1,
@@ -169,7 +190,7 @@
                     title:'修改当前标签组名称',
                     content:$("#addGroupAlert"),
                     data:{'_token':$('meta[name="csrf_token"]').attr("content")},
-                    area: ['450px','400px'],
+                    area: ['450px','500px'],
                     yes :function(index,layero){
                         if($('.alert-name').val()==''){
                             layer.msg('请输入标签组', {time: 1000, icon: 5})
@@ -188,6 +209,7 @@
                                 'id': currentId,
                                 'name':$('.alert-name').val(),
                                 'memo':$('.alert-memo').val(),
+                                'cover': $(document).find('input[name="imgs[]"]').val(),
                                 'is_sub': isSub
                             },
                             success: function(response) {

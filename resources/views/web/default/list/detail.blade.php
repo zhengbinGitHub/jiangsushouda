@@ -82,8 +82,4 @@
     @endsection
 
 @section('script')
-    <script type="text/javascript" src="{{asset('js/fixedScroll.js')}}"></script>
-    <script type="text/javascript">
-        $("#postNav .wrapper").fixedScroll()
-    </script>
     @endsection

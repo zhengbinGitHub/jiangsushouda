@@ -51,6 +51,18 @@ class HomeController extends BaseController
 					],
 				]
 			],
+			[
+				'icon' => 'layui-icon-camera-fill',
+				'name' => '设备管理',
+				'url' => '',
+				'children' => [
+					[
+						'icon' => '',
+						'url' => route('admin.equipment'),
+						'name' => '设备列表'
+					],
+				]
+			],
 		];
 		return view('admin.layouts.frame', compact('navigations'));
     }

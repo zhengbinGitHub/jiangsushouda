@@ -49,5 +49,6 @@
     </div>
     @stop
 @section('script')
+    <script type="text/javascript" src="{{asset('assets/static/vender/jqueryform/jquery-form.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets/static/js/home.js')}}"></script>
     @stop

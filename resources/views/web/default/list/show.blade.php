@@ -1,5 +1,5 @@
 @extends('web.default.layouts.base')
-
+@section('title', $info->title)
 @section('content')
     <div id="sitecontent" class="ff_sitecontent">
         @include('web.default.layouts.navmini')
@@ -8,37 +8,29 @@
             <div id="pageTarget" class="ff_pageTarget module">
                 <div class="module_container">
                     <div class="container_target wow">
-                        您的位置：<a href="//mo005-2384.mo5.line1.uemo.net/">首页</a><i class="fa fa-angle-right"></i><a>关于</a><i class="fa fa-angle-right"></i><a href="//mo005-2384.mo5.line1.uemo.net/list/id/19558/">动态</a><i class="fa fa-angle-right"></i><a href="//mo005-2384.mo5.line1.uemo.net/list/id/19559/">最新</a>
+                        您的位置：<a href="{{config('app.url')}}">首页</a><i class="fa fa-angle-right"></i><a>关于</a><i class="fa fa-angle-right"></i><a href="//mo005-2384.mo5.line1.uemo.net/list/id/19558/">动态</a><i class="fa fa-angle-right"></i><a href="//mo005-2384.mo5.line1.uemo.net/list/id/19559/">最新</a>
                     </div>
                     <div class="clear"></div>
                 </div>
             </div>
             <!--内容-->
             <div class="content">
-                <div class="mlistpost news module" data-thumb="//resources.jsmo.xin/templates/upload/2384/201704/1492587012820.jpg">
+                <div class="mlistpost news module" @if($info->cover) data-thumb="{{$info->cover}}" @endif>
                     <div class="module_container">
                         <div class="container_content">
                             <div class="content_wrapper">
                                 <div id="postWrapper">
                                     <div id="postContent">
                                         <div id="postInfo">
-                                            <p class="title">VR市场降温：Facebook一口气关闭200家线下体验店</p>
-                                            <p class="usetdate">2016-12-07</p>
+                                            <p class="title">{{$info->title}}</p>
+                                            <p class="usetdate">{{$info->created_at->format('Y-m-d H:i:s')}}</p>
                                             <div class="description">
-                                                <p>最近的数据来看整个VR行业开始出现降温根据外媒消息Facebook本周三一口气关闭了多达200家Oculus Rift线下体验店</p>
+                                                <p>{{$info->memo}}</p>
                                             </div>
-                                            <div class="item_tags">
-                                                <a href="//mo005-2384.mo5.line1.uemo.net/list/id/19558/tag/%25E6%2599%25BA%25E8%2583%25BD/" target="_blank">智能</a>
-                                                <a href="//mo005-2384.mo5.line1.uemo.net/list/id/19558/tag/%25E4%25BA%25A7%25E5%2593%2581/" target="_blank">产品</a>
-                                            </div>
+                                            <div class="item_tags"></div>
                                         </div>
-                                        <div class="postbody"><p><img src="//resources.jsmo.xin/templates/upload/2384/201704/1492683207627.png" title="undefined" alt="undefined"/></p>
-                                            <p><br/></p><hr/>
-                                            <p><br/></p>
-                                            <p>众所周知，如果想要体验虚拟现实的魅力，最好的方式就是前往VR体验店，各大VR体验店也一度非常火爆。不过，从最近的数据来看，整个VR行业开始出现降温。根据外媒消息，Facebook本周三一口气关闭了多达200家Oculus Rift线下体验店，差不多砍掉了在全美开设的500家体验店的40%。对此，官方给出的回应是“季节性调整”。</p>
-                                            <p><br/></p><hr/>
-                                            <p><br/></p>
-                                            <p>对此，一名多百思买(Best Buy)工作人员透露称，所谓的季节性调整，只是一种委婉的说辞而已，因为有很多Oculus Rift体验店甚至连续几天都不会有一个消费者前来体验DEMO，所以关闭没有任何的意外。</p><p><br/></p><hr/><p><br/></p><p>作为三大VR头显之一，Oculus Rift体验店之所以会遇冷，一方面是消费者对体验Oculus Rift并不怎么感兴趣，且百思买在营销推广上力度不够大，没有达到吸引消费者的要求。根据国外顾客透露，每次去百思买的Rift体验店，都不知道怎么使用那些笨重的头显，也没有工作人员加以指导。</p><p><br/></p><hr/><p><br/></p><p>另一方面就是与整个VR行业降温有关系了，毕竟VR体验店对于很多消费者的吸引力已经大不如前。</p><p><br/></p><hr/><p><br/></p>
+                                        <div class="postbody">
+                                            {!! $info->detail->content !!}
                                         </div>
                                     </div>
 

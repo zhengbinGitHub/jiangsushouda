@@ -10,7 +10,13 @@
                 <div class="layui-form-item">
                     <label for="" class="layui-form-label"><span style="color: #FF5722;">*</span>文章标题</label>
                     <div class="layui-input-block">
-                        <input type="text" name="title" value="{{old('title')}}" lay-verify="required" placeholder="请输入平台标题" class="layui-input col-xs-8" >
+                        <input type="text" name="title" value="{{old('title')}}" lay-verify="required" placeholder="请输入文章标题" class="layui-input col-xs-8" >
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="" class="layui-form-label"><span style="color: #FF5722;">*</span>文章短标题</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="subtitle" value="{{old('subtitle')}}" lay-verify="required" placeholder="请输入文章短标题" class="layui-input col-xs-8" >
                     </div>
                 </div>
                 <div class="layui-form-item">
